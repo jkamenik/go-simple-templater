@@ -1,4 +1,7 @@
 # go-simple-templater
+
+[![Build Status](https://travis-ci.org/jkamenik/go-simple-templater.svg?branch=main)](https://travis-ci.org/jkamenik/go-simple-templater)
+
 A generic templator in go.
 
 # Build / Run
