@@ -1,0 +1,15 @@
+#!/bin/bash
+
+APP_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
+
+cd "$APP_DIR"
+go mod tidy && \
+go mod vendor || exit 1
+
+if which "goimports" >/dev/null; then
+    goimports -w $(find . -type f -name '*.go' -not -path "./vendor/*")
+else
+    echo "go imports not found, recommended running 'go get golang.org/x/tools/cmd/goimports'"
+    echo "running 'go fmt' instead"
+    go fmt .
+fi
