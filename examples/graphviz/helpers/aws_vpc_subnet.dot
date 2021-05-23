@@ -1,0 +1,3 @@
+subgraph cluster_aws_vpc{{.Vpc}}_subnet{{.Subnet}} {
+    label = <<table><tr><td>VPC {{.Vpc}}</td></tr><tr><td>Subnet</td></tr></table>>
+}

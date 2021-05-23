@@ -1,0 +1,31 @@
+# This file represents all the data that is handed to the template and rendered
+# The name of the data without the extention (i.e, "example") is combined
+# with the correct extention into the output directory.
+#
+# Other things can be put in the output as well, in case there is a secondary
+# renderer.
+
+# this is required to be a valid file in `layouts`
+layout: directed.dot
+
+# This overrides the file extension of the layout.
+extention: "dot"
+
+# post processor, is an optional command that is run after the output is processed.
+# It is run on from the `output` directory and has the following
+postProcessor: "graphviz --png {{ .Name }}"
+
+# These are the driver values for the body of the layout.
+values:
+  any:
+    - value
+    - works
+    - here
+  
+  they:
+    are:
+      translated:
+        into:
+          the:
+            values: "yes"
+  # i.e., this would be "{{ .Values.they.are.translated.into.the.values }}"

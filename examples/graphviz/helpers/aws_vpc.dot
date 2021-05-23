@@ -1,0 +1,7 @@
+subgraph cluster_vpc{{.Vpc}} {
+    label = <<table><tr><td>image here</td><td>VPC {{.Vpc}}</td></tr></table>>
+
+    {{range .Subnets}}
+        {{ template "aws_vpc_subnet" . }}
+    {{ end}}
+}

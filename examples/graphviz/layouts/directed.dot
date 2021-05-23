@@ -1,0 +1,25 @@
+/*
+This is the driver of a generic set of templates.
+This is intended to render an output text file.
+
+Variables:
+  .Name - The name of the data (i.e., "example")
+  .DataFile - The full name of the data (i.e., "example.yaml", "example.yml", etc...)
+  .OutputFile - The full name of the output file (i.e., "example.dot")
+  .OutputFileAbs - The absolute path to the output file (i.e., "/some/path/to/output/example.dot")
+  .Extention - The extension, either loaded from the layout or overriden (i.e., "dot")
+  .OverriddenExtention - The extention if overridden from the template. `nil` if not overridden (i.e., "dot")
+  .Layout - The layout file name, (this file)
+  .OutputDir - The output directory
+  .OutputAbsDir - The absolute output directory path
+  .Values - The blind marshaling of the data file's `values` element
+
+Helpers:
+  All files in the `helpers` directory are rendered as invokable templates
+  Example: {{ template "aws_vpc_subnet.dot" . }}
+*/
+digraph {{ .Name }} {
+    rank {{ .Values.Rank | default "lr" }}
+
+    {{ .Value.Body }}
+}
