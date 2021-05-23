@@ -1,7 +1,16 @@
 package main
 
-import "github.com/rs/zerolog"
-import "github.com/rs/zerolog/log"
+import (
+	"fmt"
+	"html/template"
+	"os"
+	"strings"
+	"time"
+
+	"github.com/Masterminds/sprig"
+	"github.com/rs/zerolog"
+	"github.com/rs/zerolog/log"
+)
 
 func main() {
 	zerolog.SetGlobalLevel(zerolog.InfoLevel)
@@ -15,4 +24,14 @@ func main() {
 			return fmt.Sprintf("%s |", i)
 		},
 	})
+
+	tmpl, err := template.New("test").Funcs(sprig.FuncMap()).Parse("{{ \"hello!\" | upper | repeat 5 }}")
+	if err != nil {
+		panic(err)
+	}
+
+	err = tmpl.Execute(os.Stdout, nil)
+	if err != nil {
+		panic(err)
+	}
 }
